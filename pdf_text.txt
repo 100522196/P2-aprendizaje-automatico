@@ -1,0 +1,103 @@
+Aprendizaje Automático  
+Práctica 2: Aprendizaje no supervisado  
+ 
+ 
+Práctica 2 
+DETERMINACIÓN DE TIPOS  DE ESTRELLAS  
+1,5 puntos  
+ 
+INTRODUCCIÓN  
+En astronomía la clasificación de estrellas en tipos permite realizar hipótesis acerca de 
+su dinámica, establecer cómo y cuándo se form aron , su composición y cuál será su 
+evolución y fin.  El nombrar a las estrellas  como  enana s blanca s, tipo sol, supergigantes, 
+etc. no es más que una categoría asociada a algunas de esas clasificaciones.  
+ 
+ 
+Se propone en este trabajo obten er los tipos de estrellas utilizando técnicas de 
+aprendizaje automático no supervisado.  Para lo cual, s e tiene un conjunto de datos de 
+240 estrellas  con los siguientes atributos:  
+• Temperature : Temperatura  promedio de la superficie en grados K  
+• L: Luminosidad  comparada con la del Sol.  
+• R: Radio comparado con la del Sol.  
+• A_M : Magnitud absoluta (brillo  aparente de la estrella si estuviera a 10 parsec 
+de distancia)  
+• Spectral_Class : Clasificación espectral: es un valor que identifica la presencia 
+elementos químicos en el espectro de la estrella. Es una secuencia  (O, B, A, F, G, 
+K, M ) que se asocia a las estrellas desde las más calientes O, hasta las más frías 
+M 
+• Color : Color principal del espectro  
+ 
+CONSIDERACIONES GENERALES  
+1. Para realizar la práctica, los estu diantes emplearán un repositorio de código en 
+GitHub. Para ello, cada grupo debe crear un repositorio de código privado y 
+agregar como «colaborador» al profesor de prácticas (que indicará a los 
+estudiantes su nombre de usuario en GitHub). Se espera que cad a grupo haga un 
+commit semanal del código de la práctica. Esta parte de la práctica se valorará 
+con 0.5 puntos. Además, también habrá que entregar el cuaderno (notebook) 
+final a través de Aula Global.  
+2. Se proporciona un fichero de datos: “starts_data.csv”  
+3. Los resultados deben ser reproducibles. Por lo tanto, hay que fijar la semilla de 
+números aleatorios en los lugares adecuados. Se usará como semilla el NIA de 
+uno de los miembros del grupo o bien el número del grupo de prácticas.  Si hay 
+que utilizar más semillas se usan números consecutivos al NIA de base.  
+ 
+QUÉ HACER  
+ 
+1. Codificar  de manera adecuada  (ordinal) las variables categóricas (Color, Clase 
+Espectral). Tener en cuenta que el color está asociado a la cantidad de energía, y 
+algo parecido con la c lase espectral.   
+ 
+2. Para facilitar la visualización de los datos y la tarea de clustering en esta práctica, 
+convertiremos previamente los datos a 2 dimensiones, usando PCA con 2 
+componentes principales.  Los algoritmos de clustering  se aplicarán directamente 
+sobre esas  dos componentes principales obtenidas mediante PCA . 
+ 
+3. Aplicar los tres  algoritmos de clustering explicados en clase (K -Means, 
+Hierarchical Clustering/Dendrogramas, DBSCAN), comparando  y discutiendo  los 
+resultados que se  obtienen de ellos .  
+ 
+o Usar las métricas adecuadas para cada método. Para DBSCAN, se usará la 
+métrica DBCV. Esta métrica no está disponible en scikit -learn, por lo que 
+será necesario  encontrar una versión adecuada en la web.  
+o Será necesario hacer ajuste de h iper-parámetros  de las distintas técnicas  
+(número de clusters para K -medias, número de clusters para los 
+dendrogramas, eps y min_samples para DBSCAN).  
+▪ Para el ajuste de hiper -parámetros de DBSCAN, se pueden utilizar 
+los procedimientos heurísticos asociado s a DBSCAN, pero también 
+se pueden probar otros valores de hiper -parámetros, evaluar los 
+clusters resultantes con la métrica DBCV, y seleccionar los 
+mejores.  
+▪ Se puede elegir directamente una función de linkage para los 
+dendrogramas, siempre que se justifiq ue. O bien probar varias, 
+evaluarlas y quedarse con la mejor.  
+ 
+4. A partir de los resultados obtenidos , ¿qué pipeline de clustering , algoritmo , con 
+sus hiperparámetros, recomendaría realizar ? 
+ 
+5. La siguiente tabla contiene las  clases y atributos asociados a las estrellas que la 
+astronomía  utiliza  habitualmente . ¿Hay similitudes entre las clases de dicha tabla 
+y los grupos obtenidos en el punto 4? Explicar  
+ 
+ 
+ 
+ 
+ Clase  Temperatura  L R A_M  Color  Clase Espectral  
+Enana roja  3.000  7,0∙10-4 1,0∙10-1 +17.5  rojo K-M 
+Enana marrón  3.300  5,5∙10-3 3,5∙10-1 +12.5  rojo M 
+Enana blanca  14.000  2,5∙10-3 1,0∙10-2 +12.6 blanca  B-G 
+Estrella en s ecuencia 
+principal  16.000 3.2∙104 4,4 -0.4 blanca -
+amarilla  B-M 
+Super gigante  15.000  3.0∙105 5,0∙101 -6.4 blanca -
+amarilla  B-M 
+Hiper gigante  11.000  3.0∙105 1,4∙103 -9.6 amarilla  B-M 
+ 
+ 
+QUÉ ENTREGAR  
+ 
+Entregar un único n otebook con : 
+1. Comparación  y discusión de diferentes algoritmos de clustering .  
+2. Pipeline recomendado para realizar el clustering de los datos . 
+3. Discusión de la comparación de los grupos obtenidos del punto 3 y los utilizados 
+en astronomía  
+ 
